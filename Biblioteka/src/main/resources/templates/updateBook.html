@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Book</title>
+    <meta charset="UTF-8"/>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff; /* White background color */
+            color: #000; /* Black text color for better contrast */
+        }
+        h1 {
+            color: #000;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .btn {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Update Book</h1>
+    <form action="#" th:action="@{/books/update/{id}(id=${book.id})}" th:object="${book}" method="post">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" th:field="*{title}" id="title" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" th:field="*{author}" id="author" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="genre">Genre</label>
+            <input type="text" th:field="*{genre}" id="genre" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="publicationYear">Publication Year</label>
+            <input type="number" th:field="*{publicationYear}" id="publicationYear" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="availability">Availability</label>
+            <input type="text" th:field="*{availability}" id="availability" class="form-control" required>
+        </div>
+        <!-- Add other book properties here -->
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+</body>
+</html>

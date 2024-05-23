@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавление заказа</title>
+    <meta charset="UTF-8"/>
+    <style>
+        /* Добавьте свои стили CSS здесь */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff; /* Белый цвет фона */
+            color: #000; /* Черный цвет текста для лучшего контраста */
+        }
+        h2 {
+            color: #000;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"],
+        input[type="date"],
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        .button-container {
+            margin-top: 10px;
+        }
+        input[type="submit"],
+        .back-button {
+            background-color: #000; /* Черный цвет фона */
+            color: #fff; /* Белый цвет текста */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px; /* Одинаковый размер шрифта для всех кнопок */
+            margin: 5px 0; /* Отступы сверху и снизу */
+            width: auto; /* Ширина в зависимости от содержимого */
+            display: inline-block; /* Для отображения в одну линию */
+        }
+        .back-button {
+            background-color: #000; /* Черный цвет фона для кнопки "Назад" */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<h2>Добавление заказа</h2>
+<form action="/orders/create" method="post">
+    <label for="userId">ID пользователя:</label>
+    <input type="number" id="userId" name="userId">
+    <label for="bookId">ID книги:</label>
+    <input type="number" id="bookId" name="bookId">
+    <label for="orderDate">Дата заказа:</label>
+    <input type="date" id="orderDate" name="orderDate">
+    <label for="status">Статус:</label>
+    <input type="text" id="status" name="status">
+    <div class="button-container">
+        <input type="submit" value="Добавить" />
+        <a href="/orders" class="back-button">Назад</a>
+    </div>
+</form>
+</body>
+</html>

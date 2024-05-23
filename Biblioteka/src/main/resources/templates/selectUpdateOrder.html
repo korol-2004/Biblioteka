@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Orders</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            var id = document.getElementById('orderId').value;
+            window.location.href = '/orders/update/' + id;
+        }
+    </script>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff; /* White background color */
+            color: #000; /* Black text color for better contrast */
+        }
+        h1 {
+            color: #000;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"],
+        .back-button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 16px; /* Ensure font size is the same for all buttons */
+        }
+        .back-button {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Выберите заказ для обновления</h1>
+<form onsubmit="submitForm(event)">
+    <p>Введите ID заказа: <input type="text" id="orderId" /></p>
+    <p><input type="submit" value="Выбрать заказ" /><a href="/orders" class="back-button">Назад</a></p>
+</form>
+</body>
+</html>

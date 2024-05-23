@@ -2,9 +2,97 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Books</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff; /* White background color */
+            color: #000; /* Black text color for better contrast */
+        }
+        .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        h1 {
+            color: #000;
+        }
+        .top-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px; /* Adjusted margin */
+        }
+        .books-count-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start; /* Align books count container to the start */
+        }
+        .search-container {
+            flex: 2;
+            display: flex;
+            justify-content: center; /* Center the search container */
+        }
+        .home-button-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end; /* Align home button container to the end */
+        }
+        .home-button {
+            background-color: #000; /* Black background color for the home button */
+            color: #fff; /* White text color */
+            text-decoration: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-<h1>Books</h1>
+<div class="header-container">
+    <h1>Books</h1>
+</div>
+<div class="top-container">
+    <div class="books-count-container">
+        <h2>Total Books: <span th:text="${booksCount}">0</span></h2>
+    </div>
+    <div class="search-container">
+        <form action="/books/search" method="get">
+            <label for="bookTitle">Search by Title:</label>
+            <input type="text" id="bookTitle" name="title" />
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="home-button-container">
+        <a href="/" class="home-button">Home</a>
+    </div>
+</div>
 <table>
     <thead>
     <tr>
@@ -27,6 +115,10 @@
     </tr>
     </tbody>
 </table>
-<a href="/books/create">Create New Book</a>
+<div th:if="${isAdmin}" class="button-container">
+    <a href="/books/create">Create New Book</a>
+    <a href="/books/delete">Delete Book</a>
+    <a href="/books/update">Update Book</a>
+</div>
 </body>
 </html>

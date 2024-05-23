@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Библиотека Моей Компании</title>
+    <style>
+        /* Сброс стилей */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Основные стили */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Шапка */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        /* Навигация */
+        nav {
+            background-color: #333; /* Цвет фона шапки */
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            padding: 0 2rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px; /* Скругление углов */
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            background-color: #444; /* Темно-серый фон при наведении */
+            color: #ddd;
+        }
+
+        /* Основной контент */
+        main {
+            padding: 2rem;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Медиа запросы для адаптивности */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                padding: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Библиотека Моей Компании</h1>
+    <nav>
+        <ul>
+            <li><a href="/books">Книги</a></li>
+            <li><a href="/orders">Заказы</a></li>
+            <li><a href="/users">Пользователи</a></li>
+            <li><a href="/logout">Выход</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Добро пожаловать!</h2>
+    <p>Используйте навигацию для доступа к книгам, заказам и информации о пользователях.</p>
+</main>
+
+<footer>
+    <p>© 2024 Библиотека Моей Компании. Все права защищены.</p>
+</footer>
+</body>
+</html>

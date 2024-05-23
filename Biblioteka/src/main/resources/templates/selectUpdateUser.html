@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Обновление пользователя</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            var id = document.getElementById('userId').value;
+            window.location.href = '/users/update/' + id;
+        }
+    </script>
+    <style>
+        /* Добавьте свои стили CSS здесь */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
+        }
+        h1 {
+            color: #000;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px); /* Вычитаем ширину кнопки "Назад" */
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            display: inline-block; /* Для отображения в одну линию с кнопкой */
+            box-sizing: border-box; /* Включаем padding в общую ширину */
+        }
+        input[type="submit"],
+        .back-button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block; /* Для отображения в одну линию с полем ввода */
+            margin-right: 10px;
+            vertical-align: top; /* Выравнивание по верхнему краю */
+        }
+        .back-button {
+            text-decoration: none;
+            margin-right: 0; /* Убираем отступ справа */
+        }
+    </style>
+</head>
+<body>
+<h1>Выберите пользователя для обновления</h1>
+<form onsubmit="submitForm(event)">
+    <label for="userId">Введите ID пользователя:</label>
+    <input type="text" id="userId" required />
+    <input type="submit" value="Выбрать пользователя" />
+    <a href="/users" class="back-button">Назад</a>
+</form>
+</body>
+</html>

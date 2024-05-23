@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавление пользователя</title>
+    <meta charset="UTF-8"/>
+    <style>
+        /* Добавьте свои стили CSS здесь */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff; /* Белый цвет фона */
+            color: #000; /* Черный цвет текста для лучшего контраста */
+        }
+        h2 {
+            color: #000;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"] {
+            width: 100%;
+            padding: 3px; /* Уменьшенный отступ */
+            margin-bottom: 8px; /* Меньше места между полями */
+            font-size: 14px; /* Меньший размер шрифта */
+        }
+        .button-container {
+            margin-top: 10px;
+        }
+        input[type="submit"],
+        .back-button {
+            background-color: #000; /* Черный цвет фона */
+            color: #fff; /* Белый цвет текста */
+            border: none;
+            padding: 8px 16px; /* Уменьшенный отступ */
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px; /* Меньший размер шрифта */
+            margin: 4px 0; /* Меньшие отступы сверху и снизу */
+            width: auto; /* Ширина в зависимости от содержимого */
+            display: inline-block; /* Для отображения в одну линию */
+        }
+        .back-button {
+            background-color: #000; /* Черный цвет фона для кнопки "Назад" */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<h2>Добавление пользователя</h2>
+<form action="/users/create" method="post">
+    <label for="username">Имя пользователя:</label>
+    <input type="text" id="username" name="username">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password">
+    <label for="registrationDate">Дата регистрации:</label>
+    <input type="date" id="registrationDate" name="registrationDate">
+    <div class="button-container">
+        <input type="submit" value="Добавить" />
+        <a href="/users" class="back-button">Назад</a>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!-- HTML шаблон: usersbooks.html -->
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список пользователей и книг</title>
+</head>
+<body>
+<h1>Список пользователей и книг</h1>
+<table border="1">
+    <tr>
+        <th>ID пользователя</th>
+        <th>ID книги</th>
+        <th>Действия</th>
+    </tr>
+    <tr th:each="usersBook : ${usersBooks}">
+        <td th:text="${usersBook.userId}"></td>
+        <td th:text="${usersBook.bookId}"></td>
+        <td>
+            <a th:href="@{/deleteusersbook/{id}(id=${usersBook.id})}">Удалить</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

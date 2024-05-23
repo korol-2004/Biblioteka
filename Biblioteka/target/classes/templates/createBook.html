@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавление книги</title>
+    <meta charset="UTF-8"/>
+    <style>
+        /* Добавьте свои стили CSS здесь */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff; /* Белый цвет фона */
+            color: #000; /* Черный цвет текста для лучшего контраста */
+        }
+        h2 {
+            color: #000;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        .button-container {
+            margin-top: 10px; /* Отступ сверху */
+            text-align: left; /* Выравнивание по левому краю */
+        }
+        input[type="submit"],
+        .back-button {
+            background-color: #000; /* Черный цвет фона */
+            color: #fff; /* Белый цвет текста */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px; /* Одинаковый размер шрифта для всех кнопок */
+            margin: 5px; /* Отступы вокруг кнопок */
+            width: auto; /* Автоматическая ширина в зависимости от содержимого */
+        }
+        .back-button {
+            background-color: #000; /* Черный цвет фона для кнопки "Назад" */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<h2>Добавление книги</h2>
+<form action="/books/create" method="post">
+    <label for="title">Название:</label>
+    <input type="text" id="title" name="title">
+    <label for="author">Автор:</label>
+    <input type="text" id="author" name="author">
+    <label for="genre">Жанр:</label>
+    <input type="text" id="genre" name="genre">
+    <label for="publicationYear">Год публикации:</label>
+    <input type="number" id="publicationYear" name="publicationYear">
+    <label for="availability">Доступность:</label>
+    <input type="text" id="availability" name="availability">
+    <div class="button-container">
+        <input type="submit" value="Добавить" />
+        <a href="/books" class="back-button">Назад</a>
+    </div>
+</form>
+</body>
+</html>

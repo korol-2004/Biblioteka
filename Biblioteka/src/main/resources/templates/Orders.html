@@ -2,33 +2,136 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Orders</title>
+  <script>
+    function submitForm(event) {
+        event.preventDefault();
+        var id = document.getElementById('bookIdSearch').value; // Убедитесь, что ID соответствует ID поля ввода
+        window.location.href = '/orders/search/book/' + id;
+    }
+  </script>
+  <style>
+    /* Add your CSS styles here */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #fff; /* White background color */
+        color: #000; /* Black text color for better contrast */
+    }
+    .header-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    h1 {
+        color: #000;
+    }
+    .top-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px; /* Adjusted margin */
+    }
+    .orders-count-container {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start; /* Align orders count container to the start */
+    }
+    .search-container {
+        flex: 2;
+        display: flex;
+        justify-content: center; /* Center the search container */
+    }
+    .home-button-container {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end; /* Align home button container to the end */
+    }
+    .home-button {
+        background-color: #000; /* Black background color for the home button */
+        color: #fff; /* White text color */
+        text-decoration: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border: none;
+        text-align: center;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    .button-container a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #000;
+        color: #fff;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-<h1>Orders</h1>
+<div class="header-container">
+  <h1>Orders</h1>
+</div>
+<div class="top-container">
+  <div class="orders-count-container">
+    <h2>Total Orders: <span th:text="${ordersCount}">0</span></h2>
+  </div>
+  <div class="search-container">
+    <!-- Добавленный блок поиска по ID книги -->
+    <form onsubmit="submitForm(event)">
+      <label for="bookIdSearch">Search by Book ID:</label>
+      <input type="text" id="bookIdSearch">
+      <button type="submit">Search</button>
+    </form>
+
+  </div>
+  <div class="home-button-container">
+    <a href="/" class="home-button">Home</a>
+  </div>
+</div>
 <table>
   <thead>
   <tr>
     <th>Order ID</th>
-    <th>User ID</th>
-    <th>Book ID</th>
-    <th>Order Date</th>
-    <th>Status</th>
     <th>User</th>
+    <th>Book ID</th>
     <th>Book</th>
+    <th>Status</th>
+    <th>Order Date</th>
   </tr>
   </thead>
   <tbody>
+  <!-- Обновлённая таблица для отображения результатов поиска -->
   <tr th:each="order : ${ordersList}">
     <td th:text="${order.id}"></td>
-    <td th:text="${order.userId}"></td>
-    <td th:text="${order.bookId}"></td>
-    <td th:text="${order.orderDate}"></td>
-    <td th:text="${order.status}"></td>
     <td th:text="${order.user.username}"></td>
+    <td th:text="${order.book.id}"></td>
     <td th:text="${order.book.title}"></td>
+    <td th:text="${order.status}"></td>
+    <td th:text="${order.orderDate}"></td>
+  </tr>
+  <tr th:if="${ordersList.isEmpty()}">
+    <td colspan="5">No orders found for the given book ID.</td>
   </tr>
   </tbody>
 </table>
-<a href="/orders/create">Create New Order</a>
+<div th:if="${isAdmin}" class="button-container">
+  <a href="/orders/create">Create New Order</a>
+  <a href="/orders/delete">Delete Order</a>
+  <a href="/orders/update">Update Order</a>
+</div>
 </body>
 </html>

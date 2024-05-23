@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Delete Books</title>
+    <meta charset="UTF-8"/>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff; /* White background color */
+            color: #000; /* Black text color for better contrast */
+        }
+        h1 {
+            color: #000;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"],
+        .back-button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 16px; /* Ensure font size is the same for all buttons */
+        }
+        .back-button {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Выберите книгу для удаления</h1>
+<form action="/books/delete" method="post">
+    <p>Введите ID книги: <input type="text" name="id" /></p>
+    <p><input type="submit" value="Удалить книгу" /><a href="/books" class="back-button">Назад</a></p>
+</form>
+</body>
+</html>

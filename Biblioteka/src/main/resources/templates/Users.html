@@ -2,16 +2,103 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Users</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff; /* White background color */
+            color: #000; /* Black text color for better contrast */
+        }
+        .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        h1 {
+            color: #000;
+        }
+        .top-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px; /* Adjusted margin */
+        }
+        .users-count-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-start; /* Align users count container to the start */
+        }
+        .search-container {
+            flex: 2;
+            display: flex;
+            justify-content: center; /* Center the search container */
+        }
+        .home-button-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end; /* Align home button container to the end */
+        }
+        .home-button {
+            background-color: #000; /* Black background color for the home button */
+            color: #fff; /* White text color */
+            text-decoration: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-<h1>Users</h1>
+<div class="header-container">
+    <h1>Users</h1>
+</div>
+<div class="top-container">
+    <div class="users-count-container">
+        <h2>Total Users: <span th:text="${usersCount}">0</span></h2>
+    </div>
+    <div class="search-container">
+        <form action="/users/search" method="get">
+            <label for="userSearch">Search by Email:</label>
+            <input type="text" id="userSearch" name="email">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="home-button-container">
+        <a href="/" class="home-button">Home</a>
+    </div>
+</div>
 <table>
     <thead>
     <tr>
-        <th>ID</th>
+        <th>User ID</th>
         <th>Username</th>
         <th>Email</th>
-        <th>Password Hash</th>
         <th>Registration Date</th>
     </tr>
     </thead>
@@ -20,11 +107,14 @@
         <td th:text="${user.id}"></td>
         <td th:text="${user.username}"></td>
         <td th:text="${user.email}"></td>
-        <td th:text="${user.passwordHash}"></td>
         <td th:text="${user.registrationDate}"></td>
     </tr>
     </tbody>
 </table>
-<a href="/users/create">Create New User</a>
+<div th:if="${isAdmin}" class="button-container">
+    <a href="/users/create">Create New User</a>
+    <a href="/users/delete">Delete User</a>
+    <a href="/users/update">Update User</a>
+</div>
 </body>
 </html>

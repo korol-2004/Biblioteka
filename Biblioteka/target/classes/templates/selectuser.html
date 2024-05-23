@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Выбор пользователя</title>
+    <script type="text/javascript">
+        function updateUserBooksAction() {
+      var userId = document.getElementById('userSelect').value;
+      var form = document.getElementById('userForm');
+      form.action = '/infouserbooks/' + userId;
+      form.method = 'get'; // Измените здесь на 'get'
+  }
+    </script>
+</head>
+<body>
+<h1>Выберите пользователя</h1>
+<form id="userForm" action="/infouserbooks" method="get">
+    <select id="userSelect" name="userId" onchange="updateUserBooksAction()">
+        <option value="" disabled selected>Выберите пользователя</option>
+        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+    </select>
+    <input type="submit" value="Показать книги">
+</form>
+</body>
+</html>
