@@ -27,7 +27,19 @@ public class BooksController {
         return "books";
     }
 
-
+    @GetMapping("/books/1")
+    public String getBook1(Model model, Principal principal) {
+    String username = principal.getName();
+    User user = userService.findByUsername(username);
+    if (user.getRole().equals("ROLE_VIEWER")) {
+        Books book = booksRepository.findById(1L)
+                .orElseThrow(() -> new IllegalArgumentException("Нет книги с Id:1"));
+        model.addAttribute("book", book);
+        return "book";
+    } else {
+        return "accessDenied";
+    }
+	}
 
     @GetMapping("/books/create")
     public String createBooks(Model model) {
@@ -82,7 +94,7 @@ public class BooksController {
     public String countBooks(Model model) {
         long count = booksRepository.count();
         model.addAttribute("booksCount", count);
-        return "books"; // Имя вашего шаблона HTML
+        return "books"; 
     }
 
 }
