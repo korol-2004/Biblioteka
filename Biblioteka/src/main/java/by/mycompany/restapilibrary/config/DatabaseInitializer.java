@@ -42,6 +42,13 @@ public class DatabaseInitializer {
                 admin.setRole("ROLE_ADMIN");
                 userRoleService.saveUser(admin);
             }
+            if (userRoleRepository.findByUsername("viewer") == null){
+            User viewer = new User();
+            viewer.setUsername("viewer");
+            viewer.setPassword("viewer");
+            viewer.setRole("ROLE_VIEWER");
+            userRoleService.saveUser(viewer);
+        }
         };
     }
 }
